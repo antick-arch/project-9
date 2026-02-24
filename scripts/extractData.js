@@ -22,6 +22,8 @@ function extractData() {
                 status: "Interview",
                 description
             };
+            interviewList = interviewList.filter(item => item.title !== title);
+            
 
             const titleExist = interviewList.find(item => item.title == cardInfo.title );
 
@@ -49,7 +51,7 @@ function extractData() {
                 status: "Rejected",
                 description
             };
-
+            rejectedList = rejectedList.filter(item => item.title !== title);
             const titleExist = rejectedList.find(item => item.title == cardInfo.title);
 
             if (!titleExist) {
