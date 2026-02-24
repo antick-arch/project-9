@@ -2,6 +2,7 @@ calculation();
 extractData();
 
 const filterSection = document.getElementById('filter');
+
 function renderInterview() {
     allCard.classList.add('hidden');           
     filterSection.classList.remove('hidden'); 
