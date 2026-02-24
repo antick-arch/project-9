@@ -14,18 +14,24 @@ function toggleStyle(id) {
     const selected = document.getElementById(id);
     selected.classList.remove('text-[#64748B]', 'bg-[#FFFFFF]');
     selected.classList.add('text-white', 'bg-[#3B82F6]');
-    
+
 
     if (id === 'all-filter-btn') {
         allCard.classList.remove('hidden');
         filterSection.classList.add('hidden');
+
+        headerTotal.innerText = allCard.children.length;
     }
 
     if (id === 'interview-filter-btn') {
-        renderInterview();           
+        renderInterview();
+
+        headerTotal.innerText = interviewList.length  + " of " + allCard.children.length;
     }
 
     if (id === 'rejected-filter-btn') {
-        renderRejected();          
+        renderRejected();
+
+        headerTotal.innerText = rejectedList.length + " of " + allCard.children.length;
     }
 }

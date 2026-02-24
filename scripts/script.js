@@ -1,11 +1,13 @@
 calculation();
 extractData();
 
+document.querySelector('.total-count').innerText = allCard.children.length;
+
 const filterSection = document.getElementById('filter');
 
 function renderInterview() {
-    allCard.classList.add('hidden');           
-    filterSection.classList.remove('hidden'); 
+    allCard.classList.add('hidden');
+    filterSection.classList.remove('hidden');
 
 
     if (interviewList.length === 0) {
@@ -31,31 +33,43 @@ function renderInterview() {
         div.className = 'card space-y-5 p-6 bg-white rounded-md';
 
         div.innerHTML = `
-        <div class="flex justify-between items-center">
-            <div class="space-y-2">
-                <h2 class="card-title font-semibold text-[1.125rem] text-black">${interview.title}</h2>
-                <p class="card-sub-title text-[1rem] text-[#64748B]">${interview.subTitle}</p>
-            </div>
+<div class="flex justify-between items-center">
+    <div class="space-y-2">
+        <h2 class="card-title font-semibold text-[1.125rem] text-black">${interview.title}</h2>
+        <p class="card-sub-title text-[1rem] text-[#64748B]">${interview.subTitle}</p>
+    </div>
+    <div>
+        <div class="rounded-full bg-white p-2 shadow w-8 h-8 flex items-center">
+            <i class="delete-icon text-[15px] fa-regular fa-trash-can" style="color: #64748B;"></i>
         </div>
-        <div>
-            <p class="small-title text-[0.875rem] text-[#64748B]">${interview.smallTitle}</p>
-        </div>
-        <div class="space-y-2">
-            <button class="status py-2 px-3 bg-green-100 text-green-600 text-[0.875rem] rounded-md uppercase font-medium">
-                Interview
-            </button>
-            <p class="card-description text-[#323B49] text-[0.875rem] leading-5">
-                ${interview.description}
-            </p>
-        </div>
-        `;
+    </div>
+</div>
+
+<div>
+    <p class="small-title text-[0.875rem] text-[#64748B]">${interview.smallTitle}</p>
+</div>
+
+<div class="space-y-2">
+    <button class="status py-2 px-3 bg-green-100 text-green-600 text-[0.875rem] rounded-md uppercase font-medium">
+        Interview
+    </button>
+    <p class="card-description text-[#323B49] text-[0.875rem] leading-5">
+        ${interview.description}
+    </p>
+</div>
+
+<div class="flex flex-wrap md:flex-row gap-2">
+                        <button class="interview-btn py-2 px-3 bg-transparent hover:bg-green-500 text-green-500 text-[0.875rem] font-semibold hover:text-[white] border border-green-500 hover:border-transparent rounded uppercase">interview</button> 
+                        <button class="rejected-btn py-2 px-3 bg-transparent hover:bg-red-500 text-red-500 text-[0.875rem] font-semibold hover:text-white border border-red-500 hover:border-transparent rounded uppercase">Rejected</button>
+                    </div>
+`;
         filterSection.appendChild(div);
     }
 }
 
 function renderRejected() {
-    allCard.classList.add('hidden');           
-    filterSection.classList.remove('hidden');  
+    allCard.classList.add('hidden');
+    filterSection.classList.remove('hidden');
 
 
     if (rejectedList.length === 0) {
@@ -73,31 +87,43 @@ function renderRejected() {
         return;
     }
 
-  
+
     filterSection.innerHTML = "";
 
     for (let rejected of rejectedList) {
         let div = document.createElement('div');
         div.className = 'card space-y-5 p-6 bg-white rounded-md';
         div.innerHTML = `
-        <div class="flex justify-between items-center">
-            <div class="space-y-2">
-                <h2 class="card-title font-semibold text-[1.125rem] text-black">${rejected.title}</h2>
-                <p class="card-sub-title text-[1rem] text-[#64748B]">${rejected.subTitle}</p>
-            </div>
+<div class="flex justify-between items-center">
+    <div class="space-y-2">
+        <h2 class="card-title font-semibold text-[1.125rem] text-black">${rejected.title}</h2>
+        <p class="card-sub-title text-[1rem] text-[#64748B]">${rejected.subTitle}</p>
+    </div>
+    <div>
+        <div class="rounded-full bg-white p-2 shadow w-8 h-8 flex items-center">
+            <i class="delete-icon text-[15px] fa-regular fa-trash-can" style="color: #64748B;"></i>
         </div>
-        <div>
-            <p class="small-title text-[0.875rem] text-[#64748B]">${rejected.smallTitle}</p>
-        </div>
-        <div class="space-y-2">
-            <button class="status py-2 px-3 bg-red-100 text-red-600 text-[0.875rem] rounded-md uppercase font-medium">
-                Rejected
-            </button>
-            <p class="card-description text-[#323B49] text-[0.875rem] leading-5">
-                ${rejected.description}
-            </p>
-        </div>
-        `;
+    </div>
+</div>
+
+<div>
+    <p class="small-title text-[0.875rem] text-[#64748B]">${rejected.smallTitle}</p>
+</div>
+
+<div class="space-y-2">
+    <button class="status py-2 px-3 bg-red-100 text-red-600 text-[0.875rem] rounded-md uppercase font-medium">
+        Rejected
+    </button>
+    <p class="card-description text-[#323B49] text-[0.875rem] leading-5">
+        ${rejected.description}
+    </p>
+</div>
+
+<div class="flex flex-wrap md:flex-row gap-2">
+                        <button class="interview-btn py-2 px-3 bg-transparent hover:bg-green-500 text-green-500 text-[0.875rem] font-semibold hover:text-[white] border border-green-500 hover:border-transparent rounded uppercase">interview</button> 
+                        <button class="rejected-btn py-2 px-3 bg-transparent hover:bg-red-500 text-red-500 text-[0.875rem] font-semibold hover:text-white border border-red-500 hover:border-transparent rounded uppercase">Rejected</button>
+</div>
+`;
         filterSection.appendChild(div);
     }
 }
